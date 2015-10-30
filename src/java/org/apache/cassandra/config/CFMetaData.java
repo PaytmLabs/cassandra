@@ -1811,8 +1811,9 @@ public final class CFMetaData
             if (result.has("value_alias"))
                 cfm.addColumnMetadataFromAliases(Collections.singletonList(result.getBytes("value_alias")), cfm.defaultValidator, ColumnDefinition.Kind.COMPACT_VALUE);
 
-            if (result.has("dropped_columns"))
-                cfm.droppedColumns(convertDroppedColumns(result.getMap("dropped_columns", UTF8Type.instance, LongType.instance)));
+            //temprary comment out since it hit a buffer read illegal argument exception.
+            //if (result.has("dropped_columns"))
+            //    cfm.droppedColumns(convertDroppedColumns(result.getMap("dropped_columns", UTF8Type.instance, LongType.instance)));
 
             for (ColumnDefinition cd : columnDefs)
                 cfm.addOrReplaceColumnDefinition(cd);
